@@ -17,16 +17,22 @@ public class TrainController {
     @Autowired
     private PassengerService passengerService;
 
-    // POST API to add a Train
+
+
+//   http://localhost:8080/train/add-train
     @PostMapping("/add-train")
     public Train addTrain(@RequestBody Train train) {
         return trainService.addTrain(train);
     }
 
-    // POST API to add a Passenger
+
+//    http://localhost:8080/train/add-passenger/6
     @PostMapping("/add-passenger/{trainId}")
     public Passenger addPassenger(@PathVariable Long trainId, @RequestBody Passenger passenger) {
         return passengerService.addPassenger(trainId, passenger);
     }
+
+
+
 
 }

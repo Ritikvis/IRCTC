@@ -13,6 +13,7 @@ public class FoodOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long foodId;
+    private String name;
     @ManyToOne
     @JoinColumn(name = "ticket_id")
     private Passenger passenger;

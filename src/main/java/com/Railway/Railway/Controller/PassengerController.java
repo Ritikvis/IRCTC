@@ -13,7 +13,7 @@ public class PassengerController {
     private PassengerService passengerService;
 
 
-    // GET API to find the number of passengers traveling between two cities on a specific date
+//   http://localhost:8080/passengers/count?source=delhi&destination=Jaipur&date=2024-11-21
     @GetMapping("/passengers/count")
     public Long countPassengers(
             @RequestParam("source") String source,
@@ -27,9 +27,9 @@ public class PassengerController {
         return passengerService.countPassengersFromSourceToDestinationOnDate(source, destination, date);
     }
 
-//http://localhost:8080/passengers/count?source=delhi&destination=Jaipur&date=2024-11-21
 
-    // GET API to find female passengers by age range and destination
+//    http://localhost:8080/passengers/female/count?ageX=25&ageY=40&destination=Madhya Pradesh
+
     @GetMapping("/passengers/female/count")
     public Long countFemalePassengers(
             @RequestParam int ageX,

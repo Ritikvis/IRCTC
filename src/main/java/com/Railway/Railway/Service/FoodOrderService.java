@@ -1,27 +1,39 @@
 package com.Railway.Railway.Service;
 
 import com.Railway.Railway.Models.FoodOrder;
+import com.Railway.Railway.Models.Passenger;
+import com.Railway.Railway.Models.Train;
 import com.Railway.Railway.Repository.FoodOrderRepository;
+import com.Railway.Railway.Repository.PassengerRepository;
+import com.Railway.Railway.Repository.TrainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class FoodOrderService {
     @Autowired
     private FoodOrderRepository foodOrderRepository;
 
+
+
+    public String addFoodOrder(FoodOrder foodOrder) {
+        // Save the FoodOrder entity to the database
+        foodOrderRepository.save(foodOrder);
+        return "Food order added successfully!";
+    }
+
     public Long getTrainWithMaxOrdersOnDate(String date) {
-        // Fetch all food orders
+
+
         List<FoodOrder> allOrders = foodOrderRepository.findAll();
 
-        // Map to store trainId and its respective order count
         Map<Long, Integer> trainOrderCount = new HashMap<>();
 
-        // Count orders for each train on the given date
         for (FoodOrder order : allOrders) {
             if (order.getPassenger().getDate().equals(date)) {
                 Long trainId = order.getTrain().getTrainNo();

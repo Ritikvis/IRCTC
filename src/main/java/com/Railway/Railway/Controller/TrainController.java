@@ -17,6 +17,8 @@ public class TrainController {
     @Autowired
     private PassengerService passengerService;
 
+    
+// first add train , then passenger then food
 
 
 //   http://localhost:8080/train/add-train
